@@ -1,5 +1,5 @@
 import sys
-import random
+from random import randint
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsScene, QGraphicsEllipseItem
 from PyQt6.QtGui import QColor
@@ -14,10 +14,10 @@ class MainWindow(QMainWindow):
         self.graphicsView.setScene(self.scene)
         self.pushButton.clicked.connect(self.draw_circle)
 
-    def draw_circle(self):
-        diameter = random.randint(20, 100)
-        x = random.randint(0, int(self.graphicsView.width()) - diameter)
-        y = random.randint(0, int(self.graphicsView.height()) - diameter)
+    def draw_circle(self) -> None:
+        diameter = randint(20, 100)
+        x = randint(0, int(self.graphicsView.width()) - diameter)
+        y = randint(0, int(self.graphicsView.height()) - diameter)
         ellipse = QGraphicsEllipseItem(x, y, diameter, diameter)
         ellipse.setBrush(QColor(255, 255, 0))
         self.scene.addItem(ellipse)
